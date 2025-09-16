@@ -23,7 +23,7 @@ class NihssApp extends StatelessWidget {
     return MaterialApp(
       title: 'NIHSS',
       theme: base.copyWith(
-        scaffoldBackgroundColor: Colors.white,
+        scaffoldBackgroundColor: Color(0xFFFAF9F6),
         appBarTheme: const AppBarTheme(
           backgroundColor: ambulanceGreen,
           foregroundColor: Colors.black,
@@ -34,7 +34,7 @@ class NihssApp extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             backgroundColor: ambulanceGreen,
             foregroundColor: Colors.white,
-            minimumSize: const Size.fromHeight(48),
+            minimumSize: const Size.fromHeight(60),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           ),
         ),
@@ -42,7 +42,7 @@ class NihssApp extends StatelessWidget {
           style: OutlinedButton.styleFrom(
             foregroundColor: ambulanceGreen,
             side: const BorderSide(width: 2, color: ambulanceGreen),
-            minimumSize: const Size.fromHeight(48),
+            minimumSize: const Size.fromHeight(60),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           ),
         ),
@@ -66,139 +66,89 @@ class HomePage extends StatelessWidget {
             SizedBox(width: 8),
             Text(
             'NIHSS – Ambulanse',
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.white, fontWeight: FontWeight.w400,)
             ),
           ],
         ),
       ),
-      body: Container(
-        decoration: const BoxDecoration(
-          color: Colors.white
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const _HeaderStripe(),
-              const SizedBox(height: 24),
-              Text(
-                'Nevrologisk undersøkelse (NIHSS)',
-                style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'Bruk denne appen til å starte en ny NIHSS-vurdering eller se tidligere resulatater.',
-                style: Theme.of(context).textTheme.bodyLarge,
-                textAlign: TextAlign.center,
-              ),
-              const Spacer(),
-              ElevatedButton.icon(
-                icon: const Icon(Icons.play_arrow_rounded),
-                label: const Text(
-                  'Start ny undersøkelse',
-                  style: TextStyle(fontSize: 18)
-                ),
-                onPressed: () async {
-                  final prefs = await SharedPreferences.getInstance();
-                  // ignore: use_build_context_synchronously
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (_) => SurveyPage(prefs: prefs),
-                    ),
-                  );
-                },
-              ),
-              const SizedBox(height: 12),
-              OutlinedButton.icon(
-                icon: const Icon(Icons.history_rounded),
-                label: const Text(
-                  'Se tidligere undersøkelser',
-                  style: TextStyle(fontSize: 18),
-                ),
-                onPressed: () async {
-                  final prefs = await SharedPreferences.getInstance();
-                  // ignore: use_build_context_synchronously
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (_) => HistoryPage(prefs: prefs),
-                    ),
-                  );
-                },
-              ),
-              const SizedBox(height: 24),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _HeaderStripe extends StatelessWidget {
-  const _HeaderStripe();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 56,
-      decoration: const BoxDecoration(
-        color: NihssApp.ambulanceGreen,
-      ),
-      child: Stack(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Positioned.fill(
-            child: CustomPaint(
-              painter: _ChevronPainter(color: NihssApp.ambulanceGreen),
+          Container(
+            decoration: const BoxDecoration(
+              color: Color(0xFFFAF9F6)
             ),
-          ),
-          Center(
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: const [
-                Icon(Icons.local_hospital, color: Colors.black87),
-                SizedBox(width: 8),
-                Text(
-                  'AMBULANSE',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 1.2,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const SizedBox(height: 20),
+                  Center(
+                    child: Image.asset(
+                      'assets/images/brain_logo.png',
+                      width: 120,
+                      height: 120,
+                      fit: BoxFit.contain,
+                    ),
                   ),
-                ),
-              ],
+                  const SizedBox(height: 12),
+                  Text(
+                    'Nevrologisk\nundersøkelse (NIHSS)',
+                    style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Bruk denne appen til å starte en ny NIHSS-vurdering eller se tidligere resulatater.',
+                    style: Theme.of(context).textTheme.bodyLarge,
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 40),
+                  ElevatedButton.icon(
+                    icon: const Icon(Icons.play_arrow_rounded),
+                    label: const Text(
+                      'Start ny undersøkelse',
+                      style: TextStyle(fontSize: 18)
+                    ),
+                    onPressed: () async {
+                      final prefs = await SharedPreferences.getInstance();
+                      // ignore: use_build_context_synchronously
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => SurveyPage(prefs: prefs),
+                        ),
+                      );
+                    },
+                  ),
+                  const SizedBox(height: 12),
+                  OutlinedButton.icon(
+                    icon: const Icon(Icons.history_rounded),
+                    label: const Text(
+                      'Se tidligere undersøkelser',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    onPressed: () async {
+                      final prefs = await SharedPreferences.getInstance();
+                      // ignore: use_build_context_synchronously
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => HistoryPage(prefs: prefs),
+                        ),
+                      );
+                    },
+                  ),
+                  const SizedBox(height: 24),
+                ],
+              ),
             ),
           ),
         ],
       ),
     );
   }
-}
-
-class _ChevronPainter extends CustomPainter {
-  final Color color;
-  const _ChevronPainter({required this.color});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()..color = color.withValues(alpha: 0.12);
-    final path = Path();
-    final step = size.width / 10;
-    for (int i = -2; i < 12; i++) {
-      final x = i * step;
-      path.reset();
-      path.moveTo(x.toDouble(), 0);
-      path.lineTo((x + step / 2).toDouble(), size.height);
-      path.lineTo((x + step).toDouble(), 0);
-      path.close();
-      canvas.drawPath(path, paint);
-    }
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
 
 // ---------------- Survey models and data ----------------
@@ -472,7 +422,7 @@ class _SurveyPageState extends State<SurveyPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Spørsmål ${_index + 1} av ${kQuestions.length}'),
+        title: Text('Spørsmål ${_index + 1} av ${kQuestions.length}')
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -614,6 +564,7 @@ class ResultPage extends StatelessWidget {
               icon: const Icon(Icons.home_rounded),
               label: const Text('Til startsiden'),
             ),
+            const SizedBox(height: 20),
           ],
         ),
       ),
