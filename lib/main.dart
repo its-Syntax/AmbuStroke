@@ -26,7 +26,7 @@ class NihssApp extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xFFFAF9F6),
         appBarTheme: const AppBarTheme(
           backgroundColor: ambulanceGreen,
-          foregroundColor: Colors.black,
+          foregroundColor: Color(0xFFFFFFFF),
           centerTitle: true,
           elevation: 0,
         ),
@@ -62,11 +62,11 @@ class HomePage extends StatelessWidget {
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: const [
-            Icon(Icons.local_hospital, color: Colors.white),
+            Icon(Icons.local_hospital),
             SizedBox(width: 8),
             Text(
             'NIHSS – Ambulanse',
-              style: TextStyle(color: Colors.white, fontWeight: FontWeight.w400,)
+              style: TextStyle(fontWeight: FontWeight.w400,)
             ),
           ],
         ),
@@ -139,6 +139,37 @@ class HomePage extends StatelessWidget {
                         ),
                       );
                     },
+                  ),
+                  const SizedBox(height: 8),
+                  TextButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (ctx) => AlertDialog(
+                          title: const Text('Hva er NIHSS?'),
+                          content: const SingleChildScrollView(
+                            child: Text(
+                              'NIHSS (National Institutes of Health Stroke Scale) er et standardisert verktøy for å vurdere alvorlighetsgraden av et hjerneslag. '
+                              'Skåren beregnes ved å summere poeng fra flere kliniske undersøkelser, som bevissthetsnivå, blikk, syn, ansikt, motorikk, språk m.m.\n\n'
+                              'Formålet med denne appen er å støtte ambulansepersonell i å gjennomføre NIHSS raskt og konsistent i prehospital fase. '
+                              'Appen veileder gjennom hvert punkt, summerer poeng og lagrer tidligere undersøkelser for oversikt.\n\n'
+                              'Merk: Appen er et beslutningsstøtteverktøy og erstatter ikke klinisk vurdering eller medisinske retningslinjer. Følg alltid lokale prosedyrer.',
+                            ),
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.of(ctx).pop(),
+                              child: const Text('Lukk'),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                    style: TextButton.styleFrom(
+                      foregroundColor: NihssApp.ambulanceGreen,
+                      textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    ),
+                    child: const Text('Les mer om NIHSS'),
                   ),
                   const SizedBox(height: 24),
                 ],
@@ -348,7 +379,7 @@ class SurveyAnswerSheet {
   String get category {
     final t = total;
     if (t == 0) return 'Ingen funn';
-    if (t <= 4) return 'Mildt';
+    if (t <= 5) return 'Mildt';
     if (t <= 15) return 'Moderat';
     if (t <= 20) return 'Moderat–alvorlig';
     return 'Alvorlig';
@@ -422,7 +453,7 @@ class _SurveyPageState extends State<SurveyPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Spørsmål ${_index + 1} av ${kQuestions.length}')
+        title: Text('Spørsmål ${_index + 1} av ${kQuestions.length}',)
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -522,6 +553,8 @@ class ResultPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final total = sheet.total;
     final category = sheet.category;
+    final categoryColor = _categoryColor(category);
+    final bgColor = categoryColor.withValues(alpha: 0.22);
 
     return Scaffold(
       appBar: AppBar(title: const Text('Resultat')),
@@ -533,9 +566,9 @@ class ResultPage extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: NihssApp.ambulanceGreen.withValues(alpha: 0.25),
+                color: bgColor,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: NihssApp.ambulanceGreen, width: 2),
+                border: Border.all(color: categoryColor, width: 2),
               ),
               child: Column(
                 children: [
@@ -569,6 +602,23 @@ class ResultPage extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+Color _categoryColor(String category) {
+  switch (category) {
+    case 'Ingen funn':
+      return const Color(0xFF2E7D32); // green 800
+    case 'Mildt':
+      return const Color(0xFFFBC02D); // amber 700
+    case 'Moderat':
+      return const Color(0xFFF57C00); // orange 800
+    case 'Moderat–alvorlig':
+      return const Color(0xFFE64A19); // deepOrange 600
+    case 'Alvorlig':
+      return const Color(0xFFD32F2F); // red 700
+    default:
+      return const Color(0xFF37474F); // blueGrey 800 fallback
   }
 }
 
@@ -637,9 +687,10 @@ class _HistoryPageState extends State<HistoryPage> {
               separatorBuilder: (_, __) => const Divider(height: 1),
               itemBuilder: (context, i) {
                 final s = _items[i];
+                final c = _categoryColor(s.category);
                 return ListTile(
                   leading: CircleAvatar(
-                    backgroundColor: NihssApp.ambulanceGreen,
+                    backgroundColor: c,
                     foregroundColor: Colors.white,
                     child: Text('${s.total}'),
                   ),
