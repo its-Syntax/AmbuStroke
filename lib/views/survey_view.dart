@@ -107,6 +107,25 @@ class _SurveyViewState extends State<SurveyView> {
               ),
             ),
             const SizedBox(height: 8),
+            Center(
+              child: TextButton.icon(
+                onPressed: () {
+                  final text = q.guidance ?? 'Ingen veiledning tilgjengelig for dette punktet.';
+                  showDialog(
+                    context: context,
+                    builder: (ctx) => AlertDialog(
+                      title: Text('Hvordan utføre vurdering – ${q.id}'),
+                      content: SingleChildScrollView(child: Text(text)),
+                      actions: [
+                        TextButton(onPressed: () => Navigator.of(ctx).pop(), child: const Text('Lukk')),
+                      ],
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.help_outline),
+                label: const Text('Hvordan utføre vurdering'),
+              ),
+            ),
             Row(
               children: [
                 Expanded(
