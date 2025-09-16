@@ -49,9 +49,19 @@ class _HistoryViewState extends State<HistoryView> {
                         title: const Text('Tøm historikk?'),
                         content: const Text('Dette vil fjerne alle lagrede undersøkelser.'),
                         actions: [
-                          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Avbryt')),
-                          TextButton(onPressed: () => Navigator.pop(context, true), child: const Text('Tøm')),
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, false),
+                            child: const Text('Avbryt')
+                          ),
+                          FilledButton(onPressed: () => Navigator.pop(context, true),
+                          style: FilledButton.styleFrom(
+                            backgroundColor: Colors.red,
+                            foregroundColor: Colors.white,
+                          ),
+                          child: const Text("Tøm"),
+                          ),
                         ],
+                        backgroundColor: Colors.red[50],
                       ),
                     );
                     if (ok == true) await _clear();
