@@ -8,196 +8,222 @@ const List<NihssQuestion> nihssQuestions = [
     description: 'Vurder våkenhet og respons på stimuli.',
     guidance:
         'Vurder om pasienten er våken og oppmerksom. Hvis ikke, vurder respons på verbal/pågående stimuli og eventuelt smerte. '
-        'Skår etter beste respons. Ikke bruk sedasjon under vurderingen.',
+        'Skår etter beste respons.',
+    illustrationAsset: 'assets/images/bevissthetsnivå.png',
     options: [
       AnswerOption(label: 'Våken', score: 0),
-      AnswerOption(label: 'Ikke våken, men vekkes av tilsnakk/lett berøring', score: 1),
-      AnswerOption(label: 'Krever gjentatt/smertefull stimuli for å vekkes', score: 2),
-      AnswerOption(label: 'Utelukkende refleksbevegelser/ingen respons', score: 3),
+      AnswerOption(label: 'Døsig, men vekkes av tilsnakk/lett berøring', score: 1),
+      AnswerOption(label: 'Døsig, krever gjentatt/smertefull stimuli for å vekkes', score: 2),
+      AnswerOption(label: 'Ingen respons', score: 3),
     ],
   ),
   NihssQuestion(
     id: '1b',
-    title: 'Spørsmål (måned og alder)',
-    description: 'Riktig svar på to enkle spørsmål.',
+    title: 'Orientering',
+    description: 'Spør om måned og alder',
     guidance:
         'Still to enkle spørsmål: nåværende måned og pasientens alder. '
         'Skår 0 hvis begge riktige, 1 hvis ett riktig, 2 hvis ingen. Ikke gi hint og ikke gjenta mer enn nødvendig.',
+    illustrationAsset: 'assets/images/orientering.png',
     options: [
-      AnswerOption(label: 'Begge riktige', score: 0),
-      AnswerOption(label: 'Én riktig', score: 1),
-      AnswerOption(label: 'Ingen riktige', score: 2),
+      AnswerOption(label: 'Svarer riktig på to spørsmål', score: 0),
+      AnswerOption(label: 'Svarer riktig på ett spørsmål (eller ved alvorlig dysartri)', score: 1),
+      AnswerOption(label: 'Svarer ikke riktig på noe spørsmål', score: 2),
     ],
   ),
   NihssQuestion(
     id: '1c',
-    title: 'Kommandoer',
-    description: 'Utfør to enkle kommandoer (f.eks. åpne/lukke øyne, knytte/slippe hånd).',
+    title: 'Respons på kommando',
+    description: 'Utfør to enkle kommandoer (lukke øyne + knyte hånd).',
     guidance:
-        'Gi to enkle kommandoer, for eksempel: “Åpne og lukk øynene” og “Knytt og slipp hånden”. '
-        'Skår etter antall korrekt utførte handlinger uten veiledning eller demonstasjon.',
+        'Be pasienten åpne øynene og så lukke øynene; deretter knyte hånden og så åpne hånden. '
+        'Dersom pasienten gjør et entydig forsøk på å følge kommando, skåres dette som utført. Hvis pasienten ikke reagerer på kommando, kan ønsket respons demonstreres av undersøker.',
+    illustrationAsset: 'assets/images/kommando.png',
     options: [
-      AnswerOption(label: 'Begge utført korrekt', score: 0),
-      AnswerOption(label: 'Én utført korrekt', score: 1),
-      AnswerOption(label: 'Ingen utført korrekt', score: 2),
+      AnswerOption(label: 'Utfører begge kommandoer korrekt', score: 0),
+      AnswerOption(label: 'Utfører en kommando korrekt', score: 1),
+      AnswerOption(label: 'Utfører ingen korrekt', score: 2),
     ],
   ),
   NihssQuestion(
-    id: '2',
-    title: 'Blikk',
-    description: 'Beste blikkretning.',
+    id: '2a',
+    title: 'Blikkbevegelse',
+    description: 'Test horisontale øyebevegelser.',
     guidance:
-        'Undersøk spontan blikkstilling og evne til lateral blikkdevisjon. '
-        'Vurder for parese eller tvangsdeviasjon. Skår etter beste blikkbevegelse.',
+        'Test horisontale øyebevegelser, voluntært eller reflektorisk (oculocephal refleks) dersom bevisstløs. '
+        'Unormale funn i ett (isolert øyemuskelparese) eller begge øyne skårer 1.\nEn fiksert blikkdreining til siden (som ikke kan overvinnes ved oculocephal manøver) skårer 2.',
+    illustrationAsset: 'assets/images/blikkbevegelse.png',
     options: [
       AnswerOption(label: 'Normal', score: 0),
       AnswerOption(label: 'Delvis blikkparese', score: 1),
-      AnswerOption(label: 'Total blikkparese (tvangsdeviasjon)', score: 2),
+      AnswerOption(label: 'Fiksert blikkdreining til siden eller total blikkparese', score: 2),
     ],
   ),
   NihssQuestion(
-    id: '3',
+    id: '3a',
     title: 'Synsfelt',
-    description: 'Undersøk kvadranter for hemianopsi.',
+    description: 'Test øvre og nedre laterale synsfelt ved hjelp av fingerbevegelse.',
     guidance:
-        'Test synsfelt ved konfrontasjon: be pasienten se på din nese og angi når de ser fingre i perifert syn. '
-        'Skår basert på tap i kvadranter/halvfelt. Ved blindhet skåres 3.',
+        'Test øvre og nedre laterale synsfelt ved hjelp av fingerbevegelse, fingertelling eller plutselige bevegelser inn fra siden i synsfeltet.\n'
+        'Skår basert på tap i kvadranter/halvfelt. Bortfall i ett kvadrant → delvis hemianopsi. Bortfall i to kvadranter på samme side (hele høyre eller hele venstre halvdel) → total hemianopsi.',
+    illustrationAsset: 'assets/images/synsfelt.png',
     options: [
       AnswerOption(label: 'Normal', score: 0),
       AnswerOption(label: 'Delvis hemianopsi', score: 1),
-      AnswerOption(label: 'Komplett hemianopsi', score: 2),
-      AnswerOption(label: 'Bilateral blindhet', score: 3),
+      AnswerOption(label: 'Total hemianopsi', score: 2),
+      AnswerOption(label: 'Bilateral hemianopsi / blind', score: 3),
     ],
   ),
   NihssQuestion(
-    id: '4',
+    id: '4a',
     title: 'Ansiktslammelse',
+    description: 'Be vise tenner, knipe igjen øynene, løfte øyenbryn',
     guidance:
-        'Be pasienten vise tenner, løfte øyenbryn og knipe øyne. '
-        'Vurder asymmetri og graden av parese i ansiktet.',
+        'Instruer eller demonstrer å vise tenner, løfte øyenbrynene og lukke øynene.\n'
+        'Hos reduserte pasienter eller pasienter som ikke forstår instruksjonene, benyttes reaksjon/grimasering på smertestimuli som grunnlag for scoring. Komatøse pasienter skårer 3.',
+    illustrationAsset: 'assets/images/ansikt.png',
     options: [
       AnswerOption(label: 'Normal', score: 0),
-      AnswerOption(label: 'Mild (nasolabial flatning)', score: 1),
-      AnswerOption(label: 'Delvis parese', score: 2),
-      AnswerOption(label: 'Total parese', score: 3),
+      AnswerOption(label: 'Asymmetri ved smil\n(Utvisket nasolabialfure)', score: 1),
+      AnswerOption(label: 'Betydelig lammelse i nedre ansiktshavdel', score: 2),
+      AnswerOption(label: 'Total lammelse i halve ansiktet\n(eller ved coma)', score: 3),
     ],
   ),
   NihssQuestion(
     id: '5a',
-    title: 'Motorikk arm – venstre',
-    description: 'Hold armen 10 sek. i 90° (sittende) eller 45° (liggende).',
+    title: 'Kraft i arm – venstre',
+    description: 'Test hver arm for seg\nHold armen i 90° (sittende) eller 45° (liggende) i 10 sekunder.',
     guidance:
-        'Be pasienten løfte venstre arm til 90° (sittende) eller 45° (liggende) i 10 sekunder. '
-        'Skår drift, ikke motstand mot tyngdekraft hvis ikke holdes.',
+        'Test hver arm for seg. Hjelp pasienten til å holde armen utstrakt i 45° / 90° vinkel med håndflaten ned, slipp armen og skår bevegelsen.\n'
+        'Ved brudd/amputasjon skåres 0.',
+    illustrationAsset: 'assets/images/motorikk_arm.png',
     options: [
-      AnswerOption(label: 'Ingen drift', score: 0),
-      AnswerOption(label: 'Drift < 10 sek', score: 1),
-      AnswerOption(label: 'Sporer under 10 sek', score: 2),
-      AnswerOption(label: 'Liten bevegelse', score: 3),
+      AnswerOption(label: 'Normal  (også ved "ikke testbar")', score: 0),
+      AnswerOption(label: 'Drifter til lavere posisjon', score: 1),
+      AnswerOption(label: 'Noe bevegelse mot tyngdekraften,\ndrifter til sengen', score: 2),
+      AnswerOption(label: 'Kun små muskelbevegelser,\nfaller til sengen', score: 3),
       AnswerOption(label: 'Ingen bevegelse', score: 4),
     ],
   ),
   NihssQuestion(
     id: '5b',
-    title: 'Motorikk arm – høyre',
-    description: 'Hold armen 10 sek. i 90° (sittende) eller 45° (liggende).',
+    title: 'Kraft i arm – høyre',
+    description: 'Test hver arm for seg.\nHold armen i 90° (sittende) eller 45° (liggende) i 10 sekunder.',
     guidance:
-        'Samme som 5a for høyre arm. Skår etter tydelig drift innen 10 sekunder eller manglende bevegelse.',
+        'Test hver arm for seg. Hjelp pasienten til å holde armen utstrakt i 45° / 90° vinkel med håndflaten ned, slipp armen og skår bevegelsen.\n'
+        'Ved brudd/amputasjon skåres 0.',
+    illustrationAsset: 'assets/images/motorikk_arm.png',
     options: [
-      AnswerOption(label: 'Ingen drift', score: 0),
-      AnswerOption(label: 'Drift < 10 sek', score: 1),
-      AnswerOption(label: 'Sporer under 10 sek', score: 2),
-      AnswerOption(label: 'Liten bevegelse', score: 3),
+      AnswerOption(label: 'Normal  (også ved "ikke testbar")', score: 0),
+      AnswerOption(label: 'Drifter til lavere posisjon', score: 1),
+      AnswerOption(label: 'Noe bevegelse mot tyngdekraften,\ndrifter til sengen', score: 2),
+      AnswerOption(label: 'Kun små muskelbevegelser,\nfaller til sengen', score: 3),
       AnswerOption(label: 'Ingen bevegelse', score: 4),
     ],
   ),
   NihssQuestion(
     id: '6a',
-    title: 'Motorikk ben – venstre',
-    description: 'Hold benet 5 sek. i 30° (liggende).',
+    title: 'Kraft i ben – venstre',
+    description: 'Test hvert ben for seg.\nHold benet utstrakt 30° i 5 sekunder.',
     guidance:
-        'Be pasienten løfte venstre ben 30° i 5 sekunder (liggende). '
-        'Skår drift eller manglende evne til å holde benet løftet.',
+        'Test hvert ben for seg. Hjelp pasienten til å holde benet utstrakt i 30 ° vinkel, slipp benet og skår bevegelsen.\n'
+        'Ved brudd/amputasjon skåres 0.',
+    illustrationAsset: 'assets/images/motorikk_arm.png',
     options: [
-      AnswerOption(label: 'Ingen drift', score: 0),
-      AnswerOption(label: 'Drift < 5 sek', score: 1),
-      AnswerOption(label: 'Sporer under 5 sek', score: 2),
-      AnswerOption(label: 'Liten bevegelse', score: 3),
+      AnswerOption(label: 'Normal  (også ved "ikke testbar")', score: 0),
+      AnswerOption(label: 'Drifter til lavere posisjon', score: 1),
+      AnswerOption(label: 'Noe bevegelse mot tyngdekraften,\ndrifter til sengen', score: 2),
+      AnswerOption(label: 'Ingen bevegelse mot tyngdekraften,\nfaller til sengen', score: 3),
       AnswerOption(label: 'Ingen bevegelse', score: 4),
     ],
   ),
   NihssQuestion(
     id: '6b',
-    title: 'Motorikk ben – høyre',
-    description: 'Hold benet 5 sek. i 30° (liggende).',
-    guidance: 'Som 6a for høyre ben.',
+    title: 'Kraft i ben – høyre',
+    description: 'Test hvert ben for seg.\nHold benet utstrakt 30° i 5 sekunder.',
+    guidance: 
+        'Test hvert ben for seg. Hjelp pasienten til å holde benet utstrakt i 30 ° vinkel, slipp benet og skår bevegelsen.\n'
+        'Ved brudd/amputasjon skåres 0.',
+    illustrationAsset: 'assets/images/motorikk_arm.png',
     options: [
-      AnswerOption(label: 'Ingen drift', score: 0),
-      AnswerOption(label: 'Drift < 5 sek', score: 1),
-      AnswerOption(label: 'Sporer under 5 sek', score: 2),
-      AnswerOption(label: 'Liten bevegelse', score: 3),
+      AnswerOption(label: 'Normal  (også ved "ikke testbar")', score: 0),
+      AnswerOption(label: 'Drifter til lavere posisjon', score: 1),
+      AnswerOption(label: 'Noe bevegelse mot tyngdekraften,\ndrifter til sengen', score: 2),
+      AnswerOption(label: 'Ingen bevegelse mot tyngdekraften,\nfaller til sengen', score: 3),
       AnswerOption(label: 'Ingen bevegelse', score: 4),
     ],
   ),
   NihssQuestion(
-    id: '7',
-    title: 'Ataksi (lemmer)',
+    id: '7a',
+    title: 'Koordinasjon / Ataksi',
+    description: 'Finger-nese-prøve / hæl-kne-prøve',
     guidance:
-        'Test finger-til-nese og hæl-til-kne for koordinasjon. '
-        'Skår kun cerebellær ataksi, ikke svakhet eller sensorisk svikt.',
+        'Test finger-til-nese og hæl-til-kne prøve på begge sider. Ataksi skal ikke skåres hvis den kan forklares av kraftsvikt eller sensorisk svikt alene. Det du ser etter er “klossete” bevegelser som ikke skyldes ren lammelse.\n'
+        'Ved paralyse eller hos pasienter som ikke klarer å følge instruksjonen, skåres 0 = normal',
+    illustrationAsset: 'assets/images/ataksi.png',
     options: [
-      AnswerOption(label: 'Ingen', score: 0),
-      AnswerOption(label: 'I én ekstremitet', score: 1),
-      AnswerOption(label: 'I to ekstremiteter', score: 2),
+      AnswerOption(label: 'Normal\n(også ved "ikke testbar" eller ved coma)', score: 0),
+      AnswerOption(label: 'Ataksi i arm eller ben', score: 1),
+      AnswerOption(label: 'Ataksi i arm og ben', score: 2),
     ],
   ),
   NihssQuestion(
-    id: '8',
-    title: 'Sensibilitet',
+    id: '8a',
+    title: 'Hudfølelse',
+    description: 'Sensibilitet for berøring eller stikk',
     guidance:
-        'Test respons på lett berøring og/eller pinprick på begge sider av kroppen. '
-        'Skår for redusert eller fraværende følelse. Unngå å overtolke smerterespons.',
+        'Test respons på lett berøring og/eller pinprick på begge sider av kroppen på overarmer, lår. Markert sensibilitetstap skåres kun når det er entydig til stede. Stuporøse og afatiske pasienter skåres vanligvis 0 eller 1.\n'
+        'Pasienter med hjernestammeinfarkt og bilateralt sensibilitetstap, eller komatøse pasienter skåres 2.',
+    illustrationAsset: 'assets/images/hudfølelse.png',
     options: [
       AnswerOption(label: 'Normal', score: 0),
-      AnswerOption(label: 'Lett-moderat nedsatt', score: 1),
-      AnswerOption(label: 'Alvorlig nedsatt/ingen følelse', score: 2),
+      AnswerOption(label: 'Lettere sensibilitetsnedsettelse', score: 1),
+      AnswerOption(label: 'Markert sensibilitetstap\n(også ved coma, tertraparese)', score: 2),
     ],
   ),
   NihssQuestion(
-    id: '9',
-    title: 'Språk (afasi)',
+    id: '9a',
+    title: 'Språk / afasi',
+    description: 'Spontan tale, taleforståelse',
     guidance:
-        'Vurder forståelse, benevning, repetisjon og spontan tale. '
-        'Bruk enkle oppgaver. Skår etter grad av afasi, ikke dysartri.',
+        'Pasienten skal formelt skåres etter standardiserte bilder og (engelske) setninger. I praksis testes språket ved å vurdere spontan tale og taleforståelse. Leseforståelse testes ved å skrive med store bokstaver ”lukk øynene” på et papir og be pasienten gjøre hva som står på lappen.\n'
+        'Benevning testes ved at pasienten sier navnet på forskjellige kjente gjenstander. Samlet språkvurdering går på om samtale er ”mulig” eller ”svært vanskelig eller umulig”. Komatøse pasienter skårer 3',
+    illustrationAsset: 'assets/images/afasi.png',
     options: [
       AnswerOption(label: 'Normal', score: 0),
-      AnswerOption(label: 'Mild-moderat afasi', score: 1),
-      AnswerOption(label: 'Alvorlig afasi', score: 2),
-      AnswerOption(label: 'Stum/global afasi', score: 3),
+      AnswerOption(label: 'Moderat afasi, samtale mulig', score: 1),
+      AnswerOption(label: 'Markert afasi, samtale svært vanskelig eller umulig', score: 2),
+      AnswerOption(label: 'Ikke språk (også ved coma)', score: 3),
     ],
   ),
   NihssQuestion(
-    id: '10',
-    title: 'Dysartri (tale)',
+    id: '10a',
+    title: 'Tale / dysartri',
+    description: 'Spontan tale',
     guidance:
-        'Vurder uttale ved å la pasienten lese/ gjenta ord eller fraser. '
-        'Skår for utydelig tale pga. motorisk talevanske, ikke afasi.',
+        'Pasienten skal formelt skåres etter standardiserte bilder og (engelske) setninger. I praksis testes tale gjennom samtale med pasienten.\n'
+        'Pasienter som ikke har språk, som ikke kan forstås på en meningsfylt måte, eller er komatøs, skårer 2. Alle andre lettere grader av dysartri skårer 1.',
+    illustrationAsset: 'assets/images/dysartri.png',
     options: [
       AnswerOption(label: 'Normal', score: 0),
-      AnswerOption(label: 'Mild-moderat dysartri', score: 1),
-      AnswerOption(label: 'Alvorlig dysartri/ujevn', score: 2),
+      AnswerOption(label: 'Mild - moderat dysartri', score: 1),
+      AnswerOption(label: 'Nær uforståelig tale eller anartri\n(også ved coma)', score: 2),
     ],
   ),
   NihssQuestion(
-    id: '11',
-    title: 'Neglekt (ekstinksjon/uvraksomhet)',
+    id: '11a',
+    title: 'Neglekt / ekstinksjon',
+    description: 'Bilateral simultan stimulering av syn og hudsensibilitet',
     guidance:
-        'Test simultan stimulering på begge sider (berøring/syn/hørsel). '
-        'Skår hvis pasienten ignorerer stimuli på affisert side ved samtidig stimulering.',
+        'Utfør tester basert på 3 og 8.\nHvis pasienten har betydelig synstap (hemianopsi) og sensibiliteten er normal, skåres 0 = normal.\n'
+        'Hvis pasienten er afatisk, men har oppmerksomhet mot begge sider, skåres 0 = normal.\n'
+        'Pasienter som entydig neglisjerer halvdelen av rommet (selv om de ikke har ekstinksjon ved visuell/ sensorisk testing) skåres 1\nKomatøse pasienter skåres 2.\n\n'
+        'Ekstinksjon = kun under dobbelt stimulering.\nNeglekt = pasienten overser halve rommet/kroppen hele tiden.\nTydelig neglekt skal alltid gi poeng, selv om ekstinksjonstesten virker normal.',
     options: [
-      AnswerOption(label: 'Ingen', score: 0),
-      AnswerOption(label: 'Delvis', score: 1),
-      AnswerOption(label: 'Total', score: 2),
+      AnswerOption(label: 'Normal (også ved hemianopsi med normal sensibilitet)', score: 0),
+      AnswerOption(label: 'Neglect i en sansemodalitet', score: 1),
+      AnswerOption(label: 'Neglect i begge sansemodaliteter', score: 2),
     ],
   ),
 ];
+

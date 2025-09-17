@@ -5,6 +5,7 @@ class NihssQuestion {
   final String title; // e.g., 'Bevissthetsnivå'
   final String? description;
   final String? guidance; // Hvordan utføre vurdering
+  final String? illustrationAsset; // Optional asset path to an illustration shown in guidance popup
   final List<AnswerOption> options;
 
   const NihssQuestion({
@@ -13,5 +14,7 @@ class NihssQuestion {
     required this.options,
     this.description,
     this.guidance,
+    this.illustrationAsset,
   });
 }
+
