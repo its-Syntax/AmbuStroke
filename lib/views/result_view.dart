@@ -44,9 +44,31 @@ class ResultView extends StatelessWidget {
               child: ListView(
                 children: sheet.answers.entries.map((e) {
                   final q = nihssQuestions.firstWhere((x) => x.id == e.key);
-                  return ListTile(
-                    title: Text('${q.id} – ${q.title}'),
-                    trailing: Text('+${e.value}'),
+                  final score = e.value;
+                  final isFlagged = score > 0;
+                  final primary = Theme.of(context).colorScheme.primary;
+                  return Container(
+                    margin: const EdgeInsets.symmetric(vertical: 4),
+                    decoration: isFlagged
+                        ? BoxDecoration(
+                            color: primary.withValues(alpha: 0.06),
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(color: primary, width: 2),
+                          )
+                        : null,
+                    child: ListTile(
+                      shape: isFlagged ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)) : null,
+                      leading: isFlagged
+                          ? Icon(Icons.warning_amber_rounded, color: primary)
+                          : const Icon(Icons.check_circle_outline, color: Colors.grey),
+                      title: Text('${q.id} – ${q.title}'),
+                      trailing: Text(
+                        '$score',
+                        style: isFlagged
+                            ? const TextStyle(fontWeight: FontWeight.bold).copyWith(color: primary)
+                            : const TextStyle(color: Colors.black54),
+                      ),
+                    ),
                   );
                 }).toList(),
               ),

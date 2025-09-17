@@ -115,7 +115,25 @@ class _SurveyViewState extends State<SurveyView> {
                     context: context,
                     builder: (ctx) => AlertDialog(
                       title: Text('Hvordan utføre vurdering – ${q.id}'),
-                      content: SingleChildScrollView(child: Text(text)),
+                      content: SingleChildScrollView(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            if (q.illustrationAsset != null) ...[
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(8),
+                                child: Image.asset(
+                                  q.illustrationAsset!,
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                              const SizedBox(height: 12),
+                            ],
+                            Text(text),
+                          ],
+                        ),
+                      ),
                       actions: [
                         TextButton(onPressed: () => Navigator.of(ctx).pop(), child: const Text('Lukk')),
                       ],
@@ -153,3 +171,4 @@ class _SurveyViewState extends State<SurveyView> {
     );
   }
 }
+
