@@ -13,7 +13,7 @@ Appen er utviklet for å gjøre vurderingen mer effektiv, oversiktlig og tilgjen
 ## Skjermbilder
 | Hjemskjerm | Skåringsspørsmål | Vurderingshjelp | Tidligere undersøkelser |
 |------------|------------------|-----------------|-------------------------|
-| ![Hjemskjerm](screenshots/start.png) | ![Skåringsspørsmål](screenshots/question.png) | ![Vurderingshjelp](screenshots/help.png) | ![Tidligere undersøkelser](screenshots/history.png) |
+| ![Hjemskjerm](screenshots/home.png) | ![Skåringsspørsmål](screenshots/question.png) | ![Vurderingshjelp](screenshots/help.png) | ![Tidligere undersøkelser](screenshots/history.png) |
 
 ## Personvern
 AmbuStroke lagrer ingen pasientdata. Du kan lese mer i vår [Privacy Policy](https://its-Syntax.github.io/AmbuStroke/privacy_policy.html).
