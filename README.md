@@ -1,6 +1,6 @@
 # AmbuStroke
 
-AmbuStroke er en mobilapplikasjon for helsepersonell som benytter NIHSS-skåring i akutte situasjoner.  
+AmbuStroke er en mobilapplikasjon laget i Flutter for ambulansepersonell og generelt helsepersonell som benytter NIHSS-skåring i akutte situasjoner.  
 Appen er utviklet for å gjøre vurderingen mer effektiv, oversiktlig og tilgjengelig – direkte på mobilen.
 
 ## Funksjoner
