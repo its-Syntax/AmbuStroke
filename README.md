@@ -1,16 +1,23 @@
-# nihss
+# AmbuStroke
 
-A new Flutter project.
+AmbuStroke er en mobilapplikasjon for helsepersonell som benytter NIHSS-skåring i akutte situasjoner.  
+Appen er utviklet for å gjøre vurderingen mer effektiv, oversiktlig og tilgjengelig – direkte på mobilen.
 
-## Getting Started
+## Funksjoner
+- Fullstendig NIHSS med enkel navigasjon
+- Automatisk utregning av totalscore
+- Mulighet til å korrigere enkeltpunkter underveis
+- Brukervennlig grensesnitt tilpasset akutte situasjoner
+- Ingen pasientdata lagres – kun totalscore lagres lokalt på enheten
 
-This project is a starting point for a Flutter application.
+## Skjermbilder
+| Hjemskjerm | Skåringsspørsmål | Vurderingshjelp | Tidligere undersøkelser |
+|------------|------------------|-----------------|-------------------------|
+| ![Hjemskjerm](screenshots/start.png) | ![Skåringsspørsmål](screenshots/question.png) | ![Vurderingshjelp](screenshots/help.png) | ![Tidligere undersøkelser](screenshots/history.png) |
 
-A few resources to get you started if this is your first Flutter project:
+## Personvern
+AmbuStroke lagrer ingen pasientdata. Du kan lese mer i vår [Privacy Policy](https://its-Syntax.github.io/AmbuStroke/privacy_policy.html).
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+© 2025 Marcus Evjen
