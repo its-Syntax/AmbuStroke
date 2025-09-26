@@ -16,7 +16,7 @@ class HomeView extends StatelessWidget {
           children: const [
             Icon(Icons.local_hospital),
             SizedBox(width: 8),
-            Text('NIHSS – Ambulanse', style: TextStyle(fontWeight: FontWeight.w500)),
+            Text('AmbuStroke', style: TextStyle(fontWeight: FontWeight.w500)),
           ],
         ),
       ),

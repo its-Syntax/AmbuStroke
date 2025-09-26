@@ -14,6 +14,7 @@ class NihssApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'NIHSS',
+      debugShowCheckedModeBanner: false,
       theme: AppTheme.theme,
       home: const HomeView(),
     );
